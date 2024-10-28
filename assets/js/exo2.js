@@ -1,7 +1,15 @@
 // Exo2 //
 function isValidDate(dateString) {
-    const [year, month, day] = dateString.split("-").map(Number);
+    const date = new Date(dateString)
+    const year = date.getFullYear()
+    const month = addZero(date.getMonth() + 1)
+    const day = addZero(date.getDate())
 
-    if(year > 1000 || month > 1 || month < 12 || day > 1 || day < 31) {
-        return true
+    console.log(`${year}-${month}-${day}` === dateString)
 }
+
+function addZero(number) {
+    return number < 10 ? `0${number}` : number
+}
+
+isValidDate('2023-02-29')
